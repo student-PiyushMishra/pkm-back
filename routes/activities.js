@@ -28,11 +28,10 @@ route.post("/delete",async (req,res)=>{
   }
   try {
     await activityModel.deleteOne({uid:req.body.uid})
-    res.render('info',{info:"Activity deleted Successfully...",returnHref:"/activity"})  
   } catch (error) {
-    res.render('error',{error:"Something went wrong while deleting but is not because of the secret either the uid is invalid or something else",returnHref:"/activity/delete"})
+    return res.render('error',{error:"Something went wrong while deleting but is not because of the secret either the uid is invalid or something else",returnHref:"/activity/delete"})
   }
-
+    res.render('info',{info:"Activity deleted Successfully...",returnHref:"/activity"})  
   
 })
 
