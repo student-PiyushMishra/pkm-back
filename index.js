@@ -5,6 +5,7 @@ import {dbConnection as DB_CONNECTION} from "./db/connection.js"
 import ejs from "ejs"
 import path from "path"
 import {__dirname} from "./constants.js"
+import cors from "cors"
 import activityRoutes from "./routes/activities.js"
 
 dotenv.config()
@@ -15,6 +16,7 @@ app.set("view engine",'ejs')
 app.use(express.static(path.join(__dirname,"public")))
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
+app.use(cors())
 DB_CONNECTION(process.env.MONGODB_URI)
 
 app.use("/activity",activityRoutes)

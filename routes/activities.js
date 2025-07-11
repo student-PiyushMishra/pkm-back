@@ -8,10 +8,15 @@ route.get('/write',(req,res)=>{
   res.render('activities',{mode:"create"})
 })
 
-route.get('/',async (req,res)=>{
-  const data = await activityModel.find({}) 
-  res.send(data)
-})
+route.get('/', async (req, res) => {
+  try {
+    const data = await activityModel.find({});
+    res.json(data); 
+  } catch (err) {
+    res.status(500).json({ error: "Something went wrong" });
+  }
+});
+
 
 route.get("/delete",(req,res)=>{
   res.render('activities',{mode:"delete"})
