@@ -26,8 +26,14 @@ route.post("/delete",async (req,res)=>{
   if(req.body.secret =! process.env.ACTIVITY_SECRET){
     return res.render('error',{error:"Secret key provided is not correct", returnHref:"/activity/delete"})
   }
-  await activityModel.deleteOne({uid:req.body.uid})
-  res.render('info',{info:"Activity deleted Successfully...",returnHref:"/activity"})
+  try {
+    await activityModel.deleteOne({uid:req.body.uid})
+    res.render('info',{info:"Activity deleted Successfully...",returnHref:"/activity"})  
+  } catch (error) {
+    res.render('error',{error:"Something went wrong while deleting but is not because of the secret either the uid is invalid or something else",returnHref:"/activity/delete"})
+  }
+
+  
 })
 
 route.post('/',async (req,res)=>{
