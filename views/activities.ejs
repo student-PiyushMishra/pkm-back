@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activites</title>
+</head>
+<body>
+<% if (mode === "create") { %>
+<form method="POST" action="/activity">
+    <input type="password" placeholder="Enter the secret..." name="secret" required>
+    <input type="text" name="keyword" placeholder="Blogs: " required>
+    <input type="text" name="hyperlink" placeholder="Future of ___" required>
+    <input type="text" name="href" placeholder="href" required>
+    <button type="submit">Submit</button>
+  </form>
+
+<% } else if (mode === "delete") { %>
+  <form method="POST" action="/activity/delete">
+    <input type="password" placeholder="Enter the secret..." name="secret" required>
+    <input type="text" name="uid" placeholder="Enter the uid" required>
+    <button type="submit">Submit</button>
+  </form>
+ <% } %>
+</body>
+</html>
