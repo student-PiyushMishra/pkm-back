@@ -4,7 +4,8 @@ import {v4 as uuid} from "uuid"
 const createActivity =  async (userData) => {
   return await activityModel.create({
     keyword: userData.keyword,
-    hyperlink: userData.hyperlink, 
+    hyperlink: userData.hyperlink,
+    href: userData.href,
     uid: uuid()
   })
 }

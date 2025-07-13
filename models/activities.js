@@ -14,6 +14,10 @@ const activitySchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  href: {
+    type: String,
+    required: true
+  },
   uid: {
     type: String,
     required:true
